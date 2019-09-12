@@ -4,20 +4,20 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder> {
-    SecondWidget.tag:(context) => SecondWidget(),
+    SecondScreen.tag:(context) => SecondScreen(),
   };
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter Routes",
-      home: new FirstWidget(),
+      home: new FirstScreen(),
       routes: routes,
     );
   }
 }
 
-class FirstWidget extends StatelessWidget {
+class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -25,16 +25,16 @@ class FirstWidget extends StatelessWidget {
         title: Text("First Widget"),
       ),
       body: RaisedButton(onPressed: () {
-//        Navigator.push(context, MaterialPageRoute(builder: (context) => SecondWidget()));
-          Navigator.of(context).pushNamed(SecondWidget.tag);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SecondScreen()));
+//        Navigator.of(context).pushNamed(SecondScreen.tag);
       },
-      child: Text("Navigate"),),
+      child: Text("Go to second screen"),),
     );
   }
 }
 
 
-class SecondWidget extends StatelessWidget {
+class SecondScreen extends StatelessWidget {
   static String tag = "second_widget";
   @override
   Widget build(BuildContext context) {
